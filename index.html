@@ -12,14 +12,24 @@
 
 <body>
     <div class="container center">
-        <!-- <div>Elapsed Time: <span id="time">0</span></div> -->
-        <h1>Number:<br><strong id="number">0</strong></h1>
-        <h2>Go Up By: <span id="goup">0.1</span>/sec</h2>
-        <button id="faster">Go Up Faster</button>
-        <h3>Cost: <span id="cost">1</span></h3>
+        <h1 id="money" class="decimal">$ <span id="num-money">.</span></h1>
+        <hr>
+        <div>
+            <img id="scoop-vanilla" class="scoop" src="img/scoop-vanilla.jpg" alt="Scoop of Vanilla">
+            <div>( $ <span id="profit-vanilla">.</span> / sec )</div>
+        </div>
+        <hr>
+        <h2>Scoopers: <span id="num-scoopers">.</span></h2>
+        <div>
+            <button id="buy-scooper">Buy Scooper</button>
+            <div>($ <span id="rate-scooper">.</span> scoop / sec)</div>
+            <div>Cost: <span id="cost-scooper">.</span></div>
+        </div>
     </div>
 </body>
+
 <script src="js/MainLoop.js"></script>
+<script src="js/ScooperGame.js"></script>
 <script src="js/scooper.js"></script>
 
 </html>

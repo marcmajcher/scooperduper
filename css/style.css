@@ -8,10 +8,15 @@
     user-select: none;
 }
 
-.container {
+.center {
     text-align: center;
 }
 
-strong {
+.scoop {
+    width: 200px;
+    cursor: pointer;
+}
+
+.decimal {
     font-family: 'Courier New', Courier, monospace;
 }
