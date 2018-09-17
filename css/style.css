@@ -29,3 +29,16 @@
     background-color: lightgray;
     color: gray;
 }
+
+.generator {
+    border: 1px solid black;
+    background-color: #eee;
+    border-radius: 40px;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.generator-title {
+    font-size: 2em;
+    font-weight: 600;
+}
