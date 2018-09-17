@@ -20,3 +20,12 @@
 .decimal {
     font-family: 'Courier New', Courier, monospace;
 }
+
+.btn-buy {
+    background-color: aquamarine;
+}
+
+.btn-buy:disabled {
+    background-color: lightgray;
+    color: gray;
+}

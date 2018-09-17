@@ -89,6 +89,8 @@ function draw(interpolationPercentage) {
     setNum('num-scoopers', generators.scooper.number, false);
     setNum('rate-scooper', generators.scooper.rate);
     setNum('cost-scooper', getCost('scooper'));
+
+    el('buy-scooper').disabled = (getCost('scooper') > player.money);
 }
 
 function end(fps, panic) {
