@@ -1,6 +1,6 @@
 {
   "name": "scooperduper",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Ice Cream Clicky Game",
   "main": "index.js",
   "directories": {

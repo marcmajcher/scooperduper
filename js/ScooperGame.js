@@ -104,6 +104,11 @@
           income: 10000,
           name: 'Strawberry',
           unlock: 100000,
+        },
+        pistachio: {
+          income: 1000000,
+          name: 'Pistachio',
+          unlock: 10000000,
         }
       };
 
@@ -138,7 +143,7 @@
         <div class="flavor flavor-locked" id="flavor-${flavor}">
           <div class="flavor-name">${this.flavors[flavor].name}</div>
           <img id="scoop-${flavor}" class="scoop" src="img/scoop-${flavor}.png" alt="Scoop of ${this.flavors[flavor].name}">
-          <div>( $ <span id="profit-${flavor}">.</span> / scoop )</div>
+          <div>( $<span id="profit-${flavor}">.</span> / scoop )</div>
         </div>
       `;
     }
@@ -151,7 +156,7 @@
           <div>
               <button class="btn-buy" id="buy-${gen}">Buy ${this.generators[gen].name}</button>
               <div>(<span id="rate-${gen}">.</span> scoop / sec)</div>
-              <div>Cost: $ <span id="cost-${gen}">.</span></div>
+              <div>Cost: $<span id="cost-${gen}">.</span></div>
           </div>
         </div>
       `;
