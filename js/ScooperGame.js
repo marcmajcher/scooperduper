@@ -52,7 +52,31 @@
           name: 'Super Scooper',
           number: 0,
           rate: 1,
-        }
+        },
+        duper: {
+          baseCost: 1100,
+          name: 'Super Duper Scooper',
+          number: 0,
+          rate: 8,
+        },
+        master: {
+          baseCost: 12000,
+          name: 'Scoop Master',
+          number: 0,
+          rate: 47,
+        },
+        bot: {
+          baseCost: 130000,
+          name: 'Scoop-Bot',
+          number: 0,
+          rate: 260,
+        },
+        tron: {
+          baseCost: 14000000,
+          name: 'Scoop-o-tron 3000',
+          number: 0,
+          rate: 1400,
+        },
       };
 
       this.player = {
@@ -67,18 +91,34 @@
     }
 
     setup() {
+      Object.keys(this.generators).forEach((gen) => {
+        this.addGenerator(gen);
+      });
+      Object.keys(this.generators).forEach((gen) => {
+        setClick(`buy-${gen}`, () => {
+          this.buy(gen);
+        });
+      }); // WAT
       Object.keys(this.flavors).forEach((flavor) => {
         setNum(`profit-${flavor}`, this.flavors[flavor].income);
         setClick(`scoop-${flavor}`, () => {
           this.scoop(flavor);
         });
       });
+    }
 
-      Object.keys(this.generators).forEach((gen) => {
-        setClick(`buy-${gen}`, () => {
-          this.buy(gen);
-        });
-      });
+    addGenerator(gen) {
+      const container = el('generators');
+      container.innerHTML += `
+        <div class="generator generator-locked" id="generator-${gen}">
+          <div class="generator-title">${this.generators[gen].name}: <span id="num-${gen}">.</span></div>
+          <div>
+              <button class="btn-buy" id="buy-${gen}">Buy ${this.generators[gen].name}</button>
+              <div>(<span id="rate-${gen}">.</span> scoop / sec)</div>
+              <div>Cost: $ <span id="cost-${gen}">.</span></div>
+          </div>
+        </div>
+      `;
     }
 
     buy(type) {
@@ -99,13 +139,11 @@
     }
 
     updateTick(delta) {
-      const scooper = this.generators.scooper;
-      const superScooper = this.generators.super;
-
       const ms = delta / 1000; // eslint-disable-line no-magic-numbers
       let secIncome = 0;
-      secIncome += scooper.rate * scooper.number;
-      secIncome += superScooper.rate * superScooper.number;
+      Object.values(this.generators).forEach((gen) => {
+        secIncome += gen.rate * gen.number;
+      });
       this.player.money += (secIncome * ms);
     }
 
