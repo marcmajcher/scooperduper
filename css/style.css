@@ -19,10 +19,21 @@
 .scoop {
     width: 200px;
     cursor: pointer;
+    margin-bottom: 40px;
 }
 
-.decimal {
+.title {
+    font-weight: bold;
+}
+
+.header {
+    border-bottom: 2px solid black;
+    margin-bottom: 60px;
+}
+
+.money-total {
     font-family: 'Courier New', Courier, monospace;
+    float: right;
 }
 
 .btn-buy {
@@ -34,14 +45,19 @@
     color: gray;
 }
 
+.flavor-name {
+    font-weight: bold;
+    font-size: 2em;
+}
+
 .generator {
     background-color: #eee;
     border: 1px solid black;
     border-radius: 40px;
     display: inline-block;
-    margin: 20px 20px;
+    margin: 20px 0;
     padding: 20px;
-    width: 40%;
+    width: 80%;
 }
 
 .generator-title {
@@ -51,4 +67,9 @@
 
 .generator-locked {
     filter: blur(6px);
+}
+
+.flavor-locked {
+    filter: blur(4px);
+    filter: grayscale(100%);
 }

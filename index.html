@@ -12,13 +12,18 @@
 
 <body>
     <div class="container center">
-        <h1 id="money" class="decimal">$ <span id="num-money">.</span></h1>
-        <hr>
-        <div>
-            <img id="scoop-vanilla" class="scoop" src="img/scoop-vanilla.jpg" alt="Scoop of Vanilla">
-            <div>( $ <span id="profit-vanilla">.</span> / scoop )</div>
+        <div class="row header">
+            <div class="one-half column">
+                <h1 class="title">Scooper Duper!</h1>
+            </div>
+            <div class="one-half column">
+                <h1 id="money" class="money-total">$ <span id="num-money">.</span></h1>
+            </div>
         </div>
-        <div id="generators"></div>
+        <div class="row">
+            <div class="one-third column" id="flavors"></div>
+            <div class="two-thirds column" id="generators"></div>
+        </div>
     </div>
 </body>
 

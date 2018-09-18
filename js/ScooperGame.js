@@ -46,36 +46,42 @@
           name: 'Scooper',
           number: 0,
           rate: 0.1,
+          unlock: 0,
         },
         super: {
           baseCost: 100,
           name: 'Super Scooper',
           number: 0,
           rate: 1,
+          unlock: 50,
         },
         duper: {
           baseCost: 1100,
           name: 'Super Duper Scooper',
           number: 0,
           rate: 8,
+          unlock: 800,
         },
         master: {
           baseCost: 12000,
           name: 'Scoop Master',
           number: 0,
           rate: 47,
+          unlock: 75000,
         },
         bot: {
           baseCost: 130000,
           name: 'Scoop-Bot',
           number: 0,
           rate: 260,
+          unlock: 70000,
         },
         tron: {
           baseCost: 14000000,
           name: 'Scoop-o-tron 3000',
           number: 0,
           rate: 1400,
+          unlock: 8000000,
         },
       };
 
@@ -85,7 +91,14 @@
 
       this.flavors = {
         vanilla: {
-          income: 1
+          income: 1,
+          name: 'Vanilla',
+          unlock: 0,
+        },
+        chocolate: {
+          income: 100,
+          name: 'Chocolate',
+          unlock: 1000,
         }
       };
     }
@@ -100,11 +113,25 @@
         });
       }); // WAT
       Object.keys(this.flavors).forEach((flavor) => {
+        this.addFlavor(flavor);
+      });
+      Object.keys(this.flavors).forEach((flavor) => {
         setNum(`profit-${flavor}`, this.flavors[flavor].income);
         setClick(`scoop-${flavor}`, () => {
           this.scoop(flavor);
         });
       });
+    }
+
+    addFlavor(flavor) {
+      const container = el('flavors');
+      container.innerHTML += `
+        <div class="flavor">
+          <div class="flavor-name">${this.flavors[flavor].name}</div>
+          <img id="scoop-${flavor}" class="scoop" src="img/scoop-${flavor}.jpg" alt="Scoop of ${this.flavors[flavor].name}">
+          <div>( $ <span id="profit-${flavor}">.</span> / scoop )</div>
+        </div>
+      `;
     }
 
     addGenerator(gen) {
