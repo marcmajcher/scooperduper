@@ -42,3 +42,7 @@
     font-size: 2em;
     font-weight: 600;
 }
+
+.generator-locked {
+    filter: blur(6px);
+}

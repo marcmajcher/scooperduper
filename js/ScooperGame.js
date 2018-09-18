@@ -68,6 +68,7 @@
 
     setup() {
       Object.keys(this.flavors).forEach((flavor) => {
+        setNum(`profit-${flavor}`, this.flavors[flavor].income);
         setClick(`scoop-${flavor}`, () => {
           this.scoop(flavor);
         });
@@ -78,8 +79,6 @@
           this.buy(gen);
         });
       });
-
-      setNum('profit-vanilla', this.flavors.vanilla.income);
     }
 
     buy(type) {
@@ -118,6 +117,10 @@
         setNum(`rate-${gen}`, this.generators[gen].rate);
         setNum(`cost-${gen}`, this.getCost(gen));
         el(`buy-${gen}`).disabled = (this.getCost(gen) > this.player.money);
+        if (this.player.money > this.generators[gen].baseCost &&
+          el(`generator-${gen}`).classList.contains('generator-locked')) {
+          el(`generator-${gen}`).classList.remove('generator-locked');
+        }
       });
     }
   }
