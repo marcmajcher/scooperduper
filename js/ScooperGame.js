@@ -40,6 +40,10 @@
     init() {
       this.multiplier = 1.15;
 
+      this.player = {
+        money: 0,
+      };
+
       this.generators = {
         scooper: {
           baseCost: 15,
@@ -85,10 +89,6 @@
         },
       };
 
-      this.player = {
-        money: 0,
-      };
-
       this.flavors = {
         vanilla: {
           income: 1,
@@ -99,23 +99,32 @@
           income: 100,
           name: 'Chocolate',
           unlock: 1000,
+        },
+        strawberry: {
+          income: 10000,
+          name: 'Strawberry',
+          unlock: 100000,
         }
       };
+
+      this.genKeys = Object.keys(this.generators);
+      this.flavorKeys = Object.keys(this.flavors);
     }
 
     setup() {
-      Object.keys(this.generators).forEach((gen) => {
+      this.genKeys.forEach((gen) => {
         this.addGenerator(gen);
       });
-      Object.keys(this.generators).forEach((gen) => {
+      this.genKeys.forEach((gen) => {
         setClick(`buy-${gen}`, () => {
           this.buy(gen);
         });
-      }); // WAT
-      Object.keys(this.flavors).forEach((flavor) => {
+      });
+
+      this.flavorKeys.forEach((flavor) => {
         this.addFlavor(flavor);
       });
-      Object.keys(this.flavors).forEach((flavor) => {
+      this.flavorKeys.forEach((flavor) => {
         setNum(`profit-${flavor}`, this.flavors[flavor].income);
         setClick(`scoop-${flavor}`, () => {
           this.scoop(flavor);
@@ -126,9 +135,9 @@
     addFlavor(flavor) {
       const container = el('flavors');
       container.innerHTML += `
-        <div class="flavor">
+        <div class="flavor flavor-locked" id="flavor-${flavor}">
           <div class="flavor-name">${this.flavors[flavor].name}</div>
-          <img id="scoop-${flavor}" class="scoop" src="img/scoop-${flavor}.jpg" alt="Scoop of ${this.flavors[flavor].name}">
+          <img id="scoop-${flavor}" class="scoop" src="img/scoop-${flavor}.png" alt="Scoop of ${this.flavors[flavor].name}">
           <div>( $ <span id="profit-${flavor}">.</span> / scoop )</div>
         </div>
       `;
@@ -177,14 +186,21 @@
     updateView() {
       setNum('num-money', Math.floor(this.player.money));
 
-      Object.keys(this.generators).forEach((gen) => {
+      this.genKeys.forEach((gen) => {
         setNum(`num-${gen}`, this.generators[gen].number, false);
         setNum(`rate-${gen}`, this.generators[gen].rate);
         setNum(`cost-${gen}`, this.getCost(gen));
         el(`buy-${gen}`).disabled = (this.getCost(gen) > this.player.money);
-        if (this.player.money > this.generators[gen].baseCost &&
-          el(`generator-${gen}`).classList.contains('generator-locked')) {
+        if (el(`generator-${gen}`).classList.contains('generator-locked') &&
+          this.player.money >= this.generators[gen].unlock) {
           el(`generator-${gen}`).classList.remove('generator-locked');
+        }
+      });
+
+      this.flavorKeys.forEach((flavor) => {
+        if (el(`flavor-${flavor}`).classList.contains('flavor-locked') &&
+          this.player.money >= this.flavors[flavor].unlock) {
+          el(`flavor-${flavor}`).classList.remove('flavor-locked');
         }
       });
     }

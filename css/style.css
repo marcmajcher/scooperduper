@@ -1,4 +1,9 @@
 /* Don't highlight anything on click-and-drag. */
+
+body {
+    background-image: url(../img/wallpaper-mint.jpg);
+}
+
 :not(input):not(textarea) {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -8,32 +13,8 @@
     user-select: none;
 }
 
-.test {
-    border: 2px solid red;
-}
-
 .center {
     text-align: center;
-}
-
-.scoop {
-    width: 200px;
-    cursor: pointer;
-    margin-bottom: 40px;
-}
-
-.title {
-    font-weight: bold;
-}
-
-.header {
-    border-bottom: 2px solid black;
-    margin-bottom: 60px;
-}
-
-.money-total {
-    font-family: 'Courier New', Courier, monospace;
-    float: right;
 }
 
 .btn-buy {
@@ -43,6 +24,14 @@
 .btn-buy:disabled {
     background-color: lightgray;
     color: gray;
+}
+
+.flavor {
+    margin-bottom: 40px;
+}
+
+.flavor-locked {
+    filter: blur(6px) grayscale(100%);
 }
 
 .flavor-name {
@@ -69,7 +58,26 @@
     filter: blur(6px);
 }
 
-.flavor-locked {
-    filter: blur(4px);
-    filter: grayscale(100%);
+.header {
+    background-color: white;
+    border-bottom: 2px solid black;
+    margin-bottom: 60px;
+}
+
+.money-total {
+    font-family: 'Courier New', Courier, monospace;
+    float: right;
+}
+
+.scoop {
+    width: 200px;
+    cursor: pointer;
+}
+
+.test {
+    border: 2px solid red;
+}
+
+.title {
+    font-weight: bold;
 }
