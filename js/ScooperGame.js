@@ -82,17 +82,17 @@
       setNum('profit-vanilla', this.flavors.vanilla.income);
     }
 
-    getCost(type) {
-      const gen = this.generators[type];
-      return gen.baseCost * Math.pow(this.multiplier, gen.number);
-    }
-
     buy(type) {
       const cost = this.getCost(type);
       if (cost <= this.player.money) {
         this.generators[type].number++;
         this.player.money -= cost;
       }
+    }
+
+    getCost(type) {
+      const gen = this.generators[type];
+      return gen.baseCost * Math.pow(this.multiplier, gen.number);
     }
 
     scoop(flavor) {
