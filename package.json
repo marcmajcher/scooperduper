@@ -21,7 +21,7 @@
   "homepage": "https://github.com/marcmajcher/scooperduper#readme",
   "devDependencies": {
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-csso": "^3.0.1",
     "gulp-htmlmin": "^5.0.1",
